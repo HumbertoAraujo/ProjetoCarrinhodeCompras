@@ -28,8 +28,8 @@ const sumCartItens = async () => {
     }
     sum += parseFloat(valueItem);
   });
-  // const roundValue = sum.toFixed(2);
-  document.querySelector('.total-price').innerText = sum;
+  const formatedValue = sum.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+  document.querySelector('.total-price').innerText = `SubTotal ${formatedValue}`;
 };
 const createTotalCartItens = () => {  
   const afterItem = document.querySelector('.empty-cart');
@@ -54,6 +54,7 @@ const cartItemClickListener = (event) => {
   itemToRemove.remove();
   saveCartItems(getlistCart().innerHTML);
   sumCartItens();
+  window.alert('Item Removido do Carrinho');
 };
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
@@ -66,7 +67,7 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
 
 const createList = async () => {
   const listItems = document.querySelector('.items');
-  const result = await fetchProducts('computador');
+  const result = await fetchProducts('notebook');
   result.results.forEach((element) => {
     const { id, title, thumbnail } = element;
     listItems.appendChild(createProductItemElement({ sku: id, name: title, image: thumbnail }));
@@ -81,6 +82,7 @@ const selectItem = async (item) => {
   listCart.appendChild(createCartItemElement({ sku: id, name: title, salePrice: price }));
   saveCartItems(listCart.innerHTML);
   sumCartItens();
+  window.alert('Item Adicionado no Carrinho');
 };
 
 const addItemCart = async (event) => {
@@ -113,7 +115,8 @@ const emptycart = () => {
     getlistCart().innerHTML = '';
     saveCartItems(getlistCart().innerHTML);
     sumCartItens();
-  });
+    window.alert('Carrinho Esvaziado com Sucesso!');
+  });  
 };
 const loadingMsg = () => {
   const mensage = 'carregando...';
