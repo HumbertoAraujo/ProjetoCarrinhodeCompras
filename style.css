@@ -21,6 +21,8 @@ body {
 
 .container-title {
   width: 80%;
+  display: flex;
+
   
 }
 
@@ -28,6 +30,9 @@ body {
   color: rgb(221, 221, 221);
   font-size: 30px;
   padding-left: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  
   
 }
 
@@ -170,4 +175,15 @@ body {
   position: fixed;
   font-size: 100px;
   color: rgb(3, 52, 45);
+}
+
+.icons {
+  margin: 5px;
+}
+
+.find-input {
+  display: flex;
+  margin-left: 20px;
+  border-radius: 5px;
+  width: 300px;
 }
