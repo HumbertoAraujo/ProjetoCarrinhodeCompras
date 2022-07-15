@@ -36,12 +36,13 @@ const createTotalCartItens = () => {
   const newElementNodeItem = createCustomElement('span', 'total-price');
   afterItem.insertAdjacentElement('beforebegin', newElementNodeItem);
   };
-const createProductItemElement = ({ sku, name, image }) => {
+const createProductItemElement = ({ sku, name, image, salePrice }) => {
   const section = document.createElement('section');
   section.className = 'item';
   section.appendChild(createCustomElement('span', 'item__sku', sku));
   section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
+  section.appendChild(createCustomElement('span', 'item__price', `Preço: R$${salePrice}`));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
   return section;
 };
@@ -87,8 +88,8 @@ const createList = async (param) => {
   const listItems = document.querySelector('.items');
   const result = await fetchProducts(param);
   result.results.forEach((element) => {
-    const { id, title, thumbnail } = element;
-    listItems.appendChild(createProductItemElement({ sku: id, name: title, image: thumbnail }));
+    const { id, title, thumbnail, price } = element;
+    listItems.appendChild(createProductItemElement({ sku: id, name: title, salePrice: price, image: thumbnail }));
   });
   removeLoadingMsg();
   getButton();

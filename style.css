@@ -213,5 +213,13 @@ body {
 
 .container-cart-item:hover {
   border-color: red;
+}
+
+.item__price {
+  color: rgb(3, 52, 45);
+  font-weight: bold;
+  text-align: center;
+  margin: 5px;
+  
 
 }
