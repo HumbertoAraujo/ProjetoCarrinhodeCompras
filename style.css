@@ -187,3 +187,31 @@ body {
   border-radius: 5px;
   width: 300px;
 }
+
+.container-cart-item{
+  display: flex;
+  border: solid;
+  border-color: rgb(10, 118, 79);
+  margin-bottom: 5px;
+  border-radius: 5px;
+
+}
+.image-cart-item {
+  border-radius: 100%;
+}
+
+.item:hover {
+  /* display: flex; */
+  /* flex-basis: 100%; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  /* margin: 40px 0; */
+  border: solid;
+  border-color: rgb(10, 118, 79);
+  width: 300px;
+}
+
+.container-cart-item:hover {
+  border-color: red;
+
+}
